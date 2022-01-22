@@ -2,13 +2,18 @@
   <!-- 首页照片组件 -->
   <HeadPhoto @scrollIndex="scrollIndex"></HeadPhoto>
 
-  <!--使用弹性盒子实现左中右结构-->
+  <!-- 使用弹性盒子实现左中右结构 -->
   <div class="index-main" id="index" >
+    <!-- 左侧卡片 -->
+    <div class="index-main-column-left">
+      <Card></Card>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import HeadPhoto from '@/components/Index/HeadPhoto.vue'
+import Card from '@/components/Index/Card.vue'
 
 // 将元素滚动到浏览器窗口的可见区域
 const scrollIndex = () => {
@@ -30,6 +35,12 @@ const scrollIndex = () => {
   margin-right: auto !important;
 
   opacity: 0.97;
+
+  .index-main-column-left{
+    padding: 0;
+    margin-right: 20px;
+    margin-left: 30px;
+  }
 
 }
 </style>
