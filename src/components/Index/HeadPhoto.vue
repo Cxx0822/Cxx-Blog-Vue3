@@ -19,7 +19,7 @@
             </h2>
 
             <!-- 链接 -->
-            <!-- <div id="waypoint" class="mini-nav" align="center">
+            <div id="waypoint" class="mini-nav" align="center">
               <router-link class="item el-icon-s-home" to="/">
                 首页
               </router-link>
@@ -33,7 +33,7 @@
               <router-link class="item el-icon-info" to="/about">
                 关于我
               </router-link>
-            </div> -->
+            </div>
 
             <!-- 向下滚动 -->
             <div class="bounce down" @click="startRead">
@@ -126,6 +126,33 @@ const startRead = () => {
     font-weight: normal;
     color: white;
   }
+
+  .mini-nav {
+    position: absolute;
+    top: 70%;
+    left: 36%;
+
+    .item {
+      border-radius: 10em;
+      font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+      background: #E0E1E2;
+      margin: 0 15px 0 0;
+      line-height: 1em;
+      text-align: center!important;
+      font-style: normal;
+      text-decoration: none;
+
+      transition: opacity .1s ease,background-color .1s ease,color .1s ease,box-shadow .1s ease,background .1s ease;
+      opacity: 0.4 !important;
+      color: rgba(0,0,0,.6);
+      padding: 11px 12px 11px 12px;
+      min-height: 1em;
+      vertical-align: baseline;
+
+      outline: 0;
+    }
+  }
+
   .down {
     animation: bounce 2s infinite;
     animation-duration: 3s;

@@ -8,6 +8,13 @@
     <div class="index-main-column-left">
       <Card></Card>
     </div>
+
+    <!-- 中间主体区域 -->
+    <div class="index-main-column-middle">
+      <!-- 路由显示 -->
+      <!-- 这里为路由定义中 index路由的子路由 -->
+      <router-view/>
+    </div>
   </div>
 </template>
 
@@ -40,6 +47,12 @@ const scrollIndex = () => {
     padding: 0;
     margin-right: 20px;
     margin-left: 30px;
+  }
+
+  .index-main-column-middle {
+    flex: 1;
+    width: 1400px !important;
+    min-height: 700px;
   }
 
 }
