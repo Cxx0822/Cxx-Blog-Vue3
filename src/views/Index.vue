@@ -1,10 +1,10 @@
 <template>
   <!-- 首页照片组件 -->
-  <HeadPhoto @scrollIndex="scrollIndex"></HeadPhoto>
+  <HeadPhoto v-if="$route.name==='Home'" @scrollIndex="scrollIndex"></HeadPhoto>
 
   <!-- 使用弹性盒子实现左中右结构 -->
   <div class="index-main" id="index" >
-    <!-- 左侧卡片 -->
+    <!-- 左侧区域 -->
     <div class="index-main-column-left">
       <Card></Card>
     </div>
@@ -15,12 +15,25 @@
       <!-- 这里为路由定义中 index路由的子路由 -->
       <router-view/>
     </div>
+
+    <!-- 右侧区域 -->
+    <div class="index-main-column-right">
+      <RightCard></RightCard>
+      <Calendar></Calendar>
+    </div>
+
+    <!--回到顶部-->
+    <el-backtop style="box-shadow: none;background: none;">
+      <img alt="" src="@/assets/toTopLogo.webp" style="width: 40px;height: 40px;">
+    </el-backtop>
   </div>
 </template>
 
 <script setup lang="ts">
 import HeadPhoto from '@/components/Index/HeadPhoto.vue'
 import Card from '@/components/Index/Card.vue'
+import RightCard from '@/components/Index/RightCard.vue'
+import Calendar from '@/components/Index/Calendar.vue'
 
 // 将元素滚动到浏览器窗口的可见区域
 const scrollIndex = () => {
@@ -55,5 +68,10 @@ const scrollIndex = () => {
     min-height: 700px;
   }
 
+  .index-main-column-right {
+    padding: 0;
+    margin-left: 20px;
+    margin-right: 30px;
+  }
 }
 </style>
