@@ -7,11 +7,6 @@
       <p class="p-motto">{{ motto.motto1 }}</p>
       <p class="p-motto2">{{ motto.motto2 }}</p>
     </div>
-    <div style="margin-top: 60px;">
-      <p id="showsectime">
-        无
-      </p>
-    </div>
   </div>
 </template>
 
@@ -28,7 +23,7 @@ const motto = reactive({
 
 <style lang="less" scoped>
 .card {
-  width: 250px;
+  width: 280px;
   height: 300px;
   padding: 20px 0px 0px 0px;
   background-color: white;

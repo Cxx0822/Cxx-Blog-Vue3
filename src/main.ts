@@ -5,10 +5,20 @@ import App from './App.vue'
 import router from './router'
 // 引入Vuex
 import store from './store'
+// 引入axios
+import VueAxios from 'vue-axios'
+import axios from 'axios'
 
 // 引入element-ui组件
 // 版本：1.2.0-beta.2  其他版本暂时有问题
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
-createApp(App).use(ElementPlus).use(store).use(router).mount('#app')
+axios.defaults.baseURL = 'https://api.skymo.top/'
+
+const app = createApp(App)
+app.use(ElementPlus).use(store).use(router).use(VueAxios, axios).mount('#app')
+
+// provide 'axios'
+// 参考官方文档：https://github.com/imcvampire/vue-axios
+app.provide('axios', app.config.globalProperties.axios)

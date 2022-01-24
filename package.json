@@ -10,10 +10,20 @@
   "dependencies": {
     "@element-plus/icons": "^0.0.11",
     "@element-plus/icons-vue": "^0.2.6",
+    "axios": "^0.25.0",
     "core-js": "^3.6.5",
     "element-plus": "^1.2.0-beta.2",
+    "github-markdown-css": "^4.0.0",
+    "markdown-it-abbr": "^1.0.4",
+    "markdown-it-deflist": "^2.1.0",
+    "markdown-it-emoji": "^2.0.0",
+    "markdown-it-sub": "^1.0.0",
+    "markdown-it-sup": "^1.0.0",
+    "mavon-editor": "^2.9.1",
     "vue": "^3.2.21",
+    "vue-axios": "^3.4.0",
     "vue-router": "^4.0.12",
+    "vue3-markdown-it": "^1.0.8",
     "vuex": "^4.0.2"
   },
   "devDependencies": {
@@ -36,6 +46,8 @@
     "eslint-plugin-vue": "^7.0.0",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
+    "highlight.js": "^11.1.0",
+    "v-viewer": "^1.6.4",
     "typescript": "~4.1.5",
     "unplugin-auto-import": "^0.5.11",
     "unplugin-vue-components": "^0.17.14"

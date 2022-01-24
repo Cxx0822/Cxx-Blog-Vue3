@@ -45,7 +45,7 @@ import Footer from '@/components/Index/Footer.vue'
 
 // 将元素滚动到浏览器窗口的可见区域
 const scrollIndex = () => {
-  document.getElementById('index').scrollIntoView({
+  (document.getElementById('index') as any).scrollIntoView({
     behavior: 'smooth',
     block: 'start'
     // inline: 'nearest'
