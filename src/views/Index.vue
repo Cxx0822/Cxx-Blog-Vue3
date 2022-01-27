@@ -1,5 +1,8 @@
 <template>
   <div class="index-container">
+    <!-- 顶部导航栏 -->
+    <Navbar class="navbar" id="nav" v-show="$route.name!=='Home' || isShowNavbar"></Navbar>
+
     <!-- 首页照片组件 -->
     <HeadPhoto v-if="$route.name==='Home'" @scrollIndex="scrollIndex"></HeadPhoto>
 
@@ -18,10 +21,10 @@
       </div>
 
       <!-- 右侧区域 -->
-      <div class="index-main-column-right">
+      <!-- <div class="index-main-column-right">
         <RightCard></RightCard>
         <Calendar></Calendar>
-      </div>
+      </div> -->
     </div>
 
     <!--回到顶部-->
@@ -37,11 +40,15 @@
 
 <script setup lang="ts">
 // 引入子组件
+import Navbar from '@/components/Index/Navbar.vue'
 import HeadPhoto from '@/components/Index/HeadPhoto.vue'
 import Card from '@/components/Index/Card.vue'
-import RightCard from '@/components/Index/RightCard.vue'
-import Calendar from '@/components/Index/Calendar.vue'
+// import RightCard from '@/components/Index/RightCard.vue'
+// import Calendar from '@/components/Index/Calendar.vue'
 import Footer from '@/components/Index/Footer.vue'
+import { ref } from 'vue'
+
+const isShowNavbar = ref(false)
 
 // 将元素滚动到浏览器窗口的可见区域
 const scrollIndex = () => {
@@ -50,6 +57,7 @@ const scrollIndex = () => {
     block: 'start'
     // inline: 'nearest'
   })
+  isShowNavbar.value = true
 }
 </script>
 
@@ -61,6 +69,15 @@ const scrollIndex = () => {
   background-attachment:fixed;
   background-size:cover;
 }
+
+.navbar {
+  position: fixed;
+  top: 0;
+  z-index:9999;
+  width: 100%;
+  opacity: 0.9;
+}
+
 .index-main {
   display: flex;
   margin-top: 70px;

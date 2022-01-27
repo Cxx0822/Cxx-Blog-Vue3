@@ -39,7 +39,10 @@
             <div class="bounce down" @click="startRead">
               <!-- element ui plus 删除了icon  -->
               <!-- https://element-plus.gitee.io/zh-CN/component/icon.html#icon-usage -->
-              <i class="el-icon-arrow-down" style="color: white" />
+              <!-- <i class="el-icon-arrow-down" style="color: white" /> -->
+              <el-icon class="el-icon-arrow-down" style="color: white">
+                <arrow-down />
+              </el-icon>
             </div>
 
           </el-card>
@@ -51,6 +54,7 @@
 
 <script setup lang="ts">
 import { defineEmits, reactive } from 'vue'
+import { ArrowDown } from '@element-plus/icons-vue'
 
 const title = reactive({
   titleImage: 'https://cdn.jsdelivr.net/gh/yubifeng/blog-resource/bloghosting/2021/04/27/340911.jpg',
