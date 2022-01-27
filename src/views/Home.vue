@@ -55,6 +55,7 @@ import VueMarkdownIt from 'vue3-markdown-it'
 import 'highlight.js/styles/monokai.css'
 
 import { reactive, inject, onMounted } from 'vue'
+import { getPubicBlogData } from '@/api/blog'
 
 const axios: any = inject('axios') // inject axios
 
@@ -99,28 +100,24 @@ const getBlogTypes = ():void => {
 }
 
 // 分页获取博客
-const getBlogData = (currentPage: number):void => {
-  axios.get('/blog/getPublicBlogs?currentPage=' + currentPage)
-    .then((res: any) => {
-      // 从后端获取数据数据
-      blogInfo.blogs = res.data.data.blogPage.records
-      blogInfo.currentPage = res.data.data.blogPage.current
-      blogInfo.total = res.data.data.blogPage.total
-      blogInfo.pageSize = res.data.data.blogPage.size
-      blogInfo.pageShow = 1
+const getBlogData = async(currentPage: number) => {
+  const { data } = await getPubicBlogData(currentPage)
 
-      // 确定分类信息
-      for (var i in blogInfo.blogs) {
-        for (var j in blogInfo.types) {
-          if (blogInfo.blogs[i].typeId === blogInfo.types[j].id) {
-            blogInfo.blogs[i].typeName = blogInfo.types[j].typeName
-          }
-        }
+  // 从后端获取数据数据
+  blogInfo.blogs = data.blogPage.records
+  blogInfo.currentPage = data.blogPage.current
+  blogInfo.total = data.blogPage.total
+  blogInfo.pageSize = data.blogPage.size
+  blogInfo.pageShow = 1
+
+  // 确定分类信息
+  for (var i in blogInfo.blogs) {
+    for (var j in blogInfo.types) {
+      if (blogInfo.blogs[i].typeId === blogInfo.types[j].id) {
+        blogInfo.blogs[i].typeName = blogInfo.types[j].typeName
       }
-    })
-    .catch((error: any) => {
-      console.log(error)
-    })
+    }
+  }
 }
 
 onMounted(() => {
