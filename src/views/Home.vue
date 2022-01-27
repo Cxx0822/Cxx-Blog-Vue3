@@ -37,6 +37,7 @@
 
     <div v-if="blogInfo.pageShow" class="home-page">
       <el-pagination
+        :current-page=blogInfo.currentPage
         :page-size=blogInfo.pageSize
         :total="blogInfo.total"
         background
@@ -67,7 +68,6 @@ const blogInfo = reactive({
     title: '',
     typeName: '',
     words: 0,
-    firstPicture: '',
     description: '',
     createTime: '',
     updateTime: ''
@@ -89,9 +89,9 @@ const toBlog = (id: number):void => {
 // 获取分类表
 const getBlogTypes = ():void => {
   // 调用方法
-  axios.get('/types')
+  axios.get('/type/listAll')
     .then((res: any) => {
-      blogInfo.types = res.data.data
+      blogInfo.types = res.data.data.typeList
     })
     .catch((error: any) => {
       console.log(error)
@@ -100,13 +100,13 @@ const getBlogTypes = ():void => {
 
 // 分页获取博客
 const getBlogData = (currentPage: number):void => {
-  axios.get('/blogs?currentPage=' + currentPage)
+  axios.get('/blog/getPublicBlogs?currentPage=' + currentPage)
     .then((res: any) => {
       // 从后端获取数据数据
-      blogInfo.blogs = res.data.data.records
-      blogInfo.currentPage = res.data.data.current
-      blogInfo.total = res.data.data.total
-      blogInfo.pageSize = res.data.data.size
+      blogInfo.blogs = res.data.data.blogPage.records
+      blogInfo.currentPage = res.data.data.blogPage.current
+      blogInfo.total = res.data.data.blogPage.total
+      blogInfo.pageSize = res.data.data.blogPage.size
       blogInfo.pageShow = 1
 
       // 确定分类信息

@@ -14,7 +14,8 @@ import axios from 'axios'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 
-axios.defaults.baseURL = 'https://api.skymo.top/'
+// axios.defaults.baseURL = 'https://api.skymo.top/'
+axios.defaults.baseURL = 'http://127.0.0.1:8080/'
 
 const app = createApp(App)
 app.use(ElementPlus).use(store).use(router).use(VueAxios, axios).mount('#app')
