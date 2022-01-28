@@ -40,12 +40,12 @@
 
 <script setup lang="ts">
 // 引入子组件
-import Navbar from '@/components/Index/Navbar.vue'
-import HeadPhoto from '@/components/Index/HeadPhoto.vue'
-import Card from '@/components/Index/Card.vue'
-// import RightCard from '@/components/Index/RightCard.vue'
-// import Calendar from '@/components/Index/Calendar.vue'
-import Footer from '@/components/Index/Footer.vue'
+import Navbar from '@/components/blog/Navbar.vue'
+import HeadPhoto from '@/components/blog/HeadPhoto.vue'
+import Card from '@/components/blog/Card.vue'
+// import RightCard from '@/components/blog/RightCard.vue'
+// import Calendar from '@/components/blog/Calendar.vue'
+import Footer from '@/components/blog/Footer.vue'
 import { ref } from 'vue'
 
 const isShowNavbar = ref(false)
