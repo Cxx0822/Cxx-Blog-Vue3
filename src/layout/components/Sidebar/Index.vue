@@ -15,15 +15,5 @@ import HomeCard from '@/layout/components/Sidebar/Card/HomeCard.vue'
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 10px;
-
-  .navbar-card {
-    height: 350px;
-    background-color: goldenrod;
-  }
-
-  .home-card {
-    background-color: greenyellow;
-  }
-
 }
 </style>

@@ -3,37 +3,41 @@
     <!-- 路由导航菜单 -->
     <!-- router:开启路由导航 以index作为路径跳转 -->
     <el-menu
-        active-text-color="#ffd04b"
-        background-color="#FFF"
-        class="el-menu-vertical-demo"
-        text-color="#000"
-        router
-      >
-        <el-menu-item index="home">
-          <el-icon><HomeFilled /></el-icon>
-          <span>首页</span>
-        </el-menu-item>
+      active-text-color="#ffd04b"
+      background-color="#FFF"
+      class="el-menu-vertical-demo"
+      text-color="#000"
+      router
+    >
+      <el-menu-item index="home">
+        <i class="fa fa-fw fa-home"></i>
+        <span>首页</span>
+      </el-menu-item>
 
-        <el-menu-item index="category">
-          <el-icon><Menu /></el-icon>
-          <span>分类</span>
-        </el-menu-item>
+      <el-menu-item index="category">
+        <i class="fa fa-fw fa-th"></i>
+        <span>分类</span>
+      </el-menu-item>
 
-        <el-menu-item index="archives">
-          <el-icon><List /></el-icon>
-          <span>归档</span>
-        </el-menu-item>
+      <el-menu-item index="archives">
+        <i class="fa fa-fw fa-archive"></i>
+        <span>归档</span>
+      </el-menu-item>
 
-        <el-menu-item index="about">
-          <el-icon><Histogram /></el-icon>
-          <span>热度排行</span>
-        </el-menu-item>
-      </el-menu>
+      <el-menu-item index="about">
+        <i class="fa fa-fw fa-signal"></i>
+        <span>热度排行</span>
+      </el-menu-item>
+
+      <!-- <el-menu-item>
+        <i class="fa fa-search"></i>
+        <span>搜索</span>
+      </el-menu-item> -->
+    </el-menu>
   </div>
 </template>
 
 <script setup lang="ts">
-import { HomeFilled, Menu, List, Histogram } from '@element-plus/icons-vue'
 
 </script>
 <style lang="scss">
@@ -48,5 +52,10 @@ import { HomeFilled, Menu, List, Histogram } from '@element-plus/icons-vue'
 .div-navItem {
   padding-top: 10px;
   padding-bottom: 10px;
+
+  i {
+    vertical-align: middle;
+    margin-right: 5px;
+  }
 }
 </style>
