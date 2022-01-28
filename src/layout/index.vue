@@ -35,21 +35,24 @@ import Footerbar from '@/layout/components/Footerbar.vue'
 .common-layout {
   padding-left: 100px;
   padding-right: 100px;
+  // 设置滚动条
+  overflow: auto;
 
   .el-container {
-    // 底部留点空白
-    height: calc(100vh - 10px);
 
     .el-aside {
        width: 240px
-      // background-color: goldenrod;
     }
 
     .el-container {
       margin-left: 20px;
 
       .el-main {
-        background-color: royalblue;
+        min-height: 800px;
+        // 卡片阴影
+        background: #fff;
+        box-shadow: 0 2px 2px 0 rgb(0 0 0 / 12%), 0 3px 1px -2px rgb(0 0 0 / 6%), 0 1px 5px 0 rgb(0 0 0 / 12%);
+        border-radius: 15px 15px 15px 15px;
         // 继承父属性
         overflow: inherit;
       }
@@ -58,22 +61,10 @@ import Footerbar from '@/layout/components/Footerbar.vue'
     .el-footer {
       height: 100px;
       margin-top: 10px;
-      background-color: burlywood;
     }
   }
 }
 </style>
 
 <style lang="scss" scoped>
-.app-wrapper {
-  position: relative;
-  height: 100%;
-  width: 100%;
-
-  .fixed-footer {
-    width: 100%;
-    position: absolute;
-    bottom: 0px
-  }
-}
 </style>
