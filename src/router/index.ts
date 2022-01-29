@@ -44,6 +44,10 @@ const routes: Array<RouteRecordRaw> = [
         }
       }
     ]
+  },
+  {
+    path: '/login',
+    component: () => import('@/views/admin/login.vue')
   }
 ]
 
