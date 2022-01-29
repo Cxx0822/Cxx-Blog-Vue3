@@ -6,8 +6,8 @@
 </template>
 
 <script setup lang="ts">
-import TitleCard from '@/layout/components/Sidebar/Card/TitleCard.vue'
-import HomeCard from '@/layout/components/Sidebar/Card/HomeCard.vue'
+import TitleCard from '@/layout/blog/components/Sidebar/Card/TitleCard.vue'
+import HomeCard from '@/layout/blog/components/Sidebar/Card/HomeCard.vue'
 </script>
 
 <style lang="scss" scoped>

@@ -25,9 +25,9 @@
 </template>
 
 <script setup lang="ts">
-import Sidebar from '@/layout/components/Sidebar/Index.vue'
-import AppMain from '@/layout/components/AppMain.vue'
-import Footerbar from '@/layout/components/Footerbar.vue'
+import Sidebar from '@/layout/blog/components/Sidebar/Index.vue'
+import AppMain from '@/layout/blog/components/AppMain.vue'
+import Footerbar from '@/layout/blog/components/Footerbar.vue'
 
 </script>
 

@@ -1,7 +1,7 @@
 import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
 // 引入全局布局组件
-import Layout from '@/layout/index.vue'
+import Layout from '@/layout/blog/index.vue'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -14,7 +14,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'home',
         name: 'Home',
-        component: () => import('@/views/Blog.vue'),
+        component: () => import('@/views/blog/Blog.vue'),
         meta: {
           title: 'Home'
         }
@@ -22,7 +22,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'category',
         name: 'Category',
-        component: () => import('@/views/Category.vue'),
+        component: () => import('@/views/blog/Category.vue'),
         meta: {
           title: 'Category'
         }
@@ -30,7 +30,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'archives',
         name: 'Archives',
-        component: () => import('@/views/Archives.vue'),
+        component: () => import('@/views/blog/Archives.vue'),
         meta: {
           title: 'Archives'
         }
@@ -38,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'about',
         name: 'About',
-        component: () => import('@/views/About.vue'),
+        component: () => import('@/views/blog/About.vue'),
         meta: {
           title: 'About'
         }
