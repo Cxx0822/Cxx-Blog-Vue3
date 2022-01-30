@@ -3,6 +3,9 @@
     <!-- 首页欢迎标题组件 -->
     <BlogWelcome :title="welcomeInfo.title" :subTitle="welcomeInfo.subTltle" ></BlogWelcome>
 
+    <!-- 侧边栏按钮 -->
+    <sidebar-menu></sidebar-menu>
+
     <!-- 开始阅读 -->
     <div class="bounce down" @click="startRead">
       <el-icon class="el-icon-arrow-down" style="color: white">
@@ -21,6 +24,7 @@
 <script setup lang="ts">
 // 引入子组件
 import BlogWelcome from '@/components/blog/BlogWelcome.vue'
+import SidebarMenu from '@/components/blog/SidebarMenu.vue'
 import { ArrowDown } from '@element-plus/icons-vue'
 import { reactive } from 'vue'
 

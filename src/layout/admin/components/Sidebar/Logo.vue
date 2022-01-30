@@ -13,22 +13,24 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'SidebarLogo',
-  props: {
-    collapse: {
-      type: Boolean,
-      required: true
-    }
+<script setup lang="ts">
+import { defineProps } from 'vue'
+
+defineProps({
+  title: {
+    type: String,
+    default: 'Cxx'
   },
-  data() {
-    return {
-      title: 'Vue Element Admin',
-      logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
-    }
+  logo: {
+    type: String,
+    default: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
+  },
+  collapse: {
+    type: Boolean,
+    require: true
   }
-}
+})
+
 </script>
 
 <style lang="scss" scoped>
@@ -67,7 +69,7 @@ export default {
       color: #fff;
       font-weight: 600;
       line-height: 50px;
-      font-size: 14px;
+      font-size: 20px;
       font-family: Avenir, Helvetica Neue, Arial, Helvetica, sans-serif;
       vertical-align: middle;
     }
