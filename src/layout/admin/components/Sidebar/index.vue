@@ -1,43 +1,39 @@
 <template>
-  <div :class="{'has-logo':showLogo}">
+  <div :class="{'has-logo':showLogo}" class="admin-siderbar-index">
     <logo v-if="showLogo" :collapse="isCollapse" :title="logoInfo.title" :logo="logoInfo.logo"/>
     <el-scrollbar wrap-class="scrollbar-wrapper">
-      <!-- <el-menu
-        :default-active="activeMenu"
-        :collapse="isCollapse"
-        :background-color="variables.menuBg"
-        :text-color="variables.menuText"
-        :unique-opened="false"
-        :active-text-color="variables.menuActiveText"
-        :collapse-transition="false"
-        mode="vertical"
-      >
-        <sidebar-item v-for="route in permission_routes" :key="route.path" :item="route" :base-path="route.path" />
-      </el-menu> -->
-
       <el-menu
         :collapse="isCollapse"
-        :background-color="variables.menuBg"
         :text-color="variables.menuText"
-        :unique-opened="false"
         :active-text-color="variables.menuActiveText"
+        :background-color="variables.menuBg"
+        :unique-opened="false"
         :collapse-transition="false"
-        mode="vertical"
+        class="el-menu-vertical-demo"
+        router
       >
-        <el-menu-item>
-          <i class="fa fa-fw fa-home"></i>
-          <span>首页</span>
-        </el-menu-item>
-
-        <el-menu-item>
-          <i class="fa fa-fw fa-th"></i>
-          <span>分类</span>
-        </el-menu-item>
-
-        <el-menu-item>
-          <i class="fa fa-fw fa-archive"></i>
-          <span>归档</span>
-        </el-menu-item>
+        <el-sub-menu index="BlogManager">
+          <template #title>
+            <i class="fa fa-fw fa-home"></i>
+            <span>博客管理</span>
+          </template>
+          <el-menu-item index="write-blog">
+            <i class="fa fa-fw fa-home"></i>
+            <span>新建文章</span>
+          </el-menu-item>
+          <el-menu-item index="blog-list">
+            <i class="fa fa-fw fa-home"></i>
+            <span>文章管理</span>
+          </el-menu-item>
+          <el-menu-item index="category">
+            <i class="fa fa-fw fa-home"></i>
+            <span>分类管理</span>
+            </el-menu-item>
+          <el-menu-item index="comment">
+            <i class="fa fa-fw fa-home"></i>
+            <span>评论管理</span>
+          </el-menu-item>
+        </el-sub-menu>
       </el-menu>
     </el-scrollbar>
   </div>
@@ -58,3 +54,15 @@ const showLogo = computed(() => true)
 const isCollapse = computed(() => false)
 
 </script>
+
+<style lang="scss" scoped>
+.admin-siderbar-index {
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  i {
+    vertical-align: middle;
+    margin-right: 5px;
+  }
+}
+</style>

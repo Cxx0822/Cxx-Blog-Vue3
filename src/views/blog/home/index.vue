@@ -47,10 +47,9 @@ import 'highlight.js/styles/monokai.css'
 
 import BlogInfo from '@/components/blog/BlogInfo.vue'
 
-import { reactive, inject, onMounted } from 'vue'
+import { reactive, onMounted } from 'vue'
 import { getPubicBlogData } from '@/api/blog'
-
-const axios: any = inject('axios') // inject axios
+import { getTypeList } from '@/api/type'
 
 const blogInfo = reactive({
   blogs: [{
@@ -81,15 +80,9 @@ const toBlog = (id: number):void => {
 }
 
 // 获取分类表
-const getBlogTypes = ():void => {
-  // 调用方法
-  axios.get('/type/listAll')
-    .then((res: any) => {
-      blogInfo.types = res.data.data.typeList
-    })
-    .catch((error: any) => {
-      console.log(error)
-    })
+const getBlogTypes = async() => {
+  const { data } = await getTypeList()
+  blogInfo.types = data.typeList
 }
 
 // 分页获取博客

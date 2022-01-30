@@ -1,11 +1,10 @@
 <template>
   <div>
-    <BlogTitle title="文章分类"></BlogTitle>
+    文章分类
   </div>
 </template>
 
 <script setup lang="ts">
-import BlogTitle from '@/components/blog/BlogTitle.vue'
 </script>
 
 <style lang="scss" scoped>

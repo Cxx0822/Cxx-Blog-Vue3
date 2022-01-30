@@ -66,29 +66,29 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/admin',
     component: AdminLayout,
-    redirect: '/admin/blog-manager/write-artical',
+    redirect: '/admin/blog-manager/write-blog',
     children: [
       {
         path: 'blog-manager',
         name: 'BlogManager',
         // 需要一个index.vue 存放路由展示 即<router-view />
         component: () => import('@/views/admin/blog-manager/index.vue'),
-        redirect: '/admin/blog-manager/write-artical',
+        redirect: '/admin/blog-manager/write-blog',
         children: [
           {
-            path: 'write-artical',
-            name: 'WriteArtical',
-            component: () => import('@/views/admin/blog-manager/write-artical.vue'),
+            path: 'write-blog',
+            name: 'WriteBlog',
+            component: () => import('@/views/admin/blog-manager/write-blog.vue'),
             meta: {
-              title: 'WriteArtical'
+              title: 'WriteBlog'
             }
           },
           {
-            path: 'artical-manager',
-            name: 'ArticalManager',
-            component: () => import('@/views/admin/blog-manager/artical-manager.vue'),
+            path: 'blog-list',
+            name: 'BlogList',
+            component: () => import('@/views/admin/blog-manager/blog-list.vue'),
             meta: {
-              title: 'ArticalManager'
+              title: 'BlogList'
             }
           },
           {

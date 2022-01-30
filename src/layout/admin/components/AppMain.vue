@@ -15,6 +15,8 @@
   width: 100%;
   position: relative;
   overflow: hidden;
+
+  padding: 10px;
 }
 
 .fixed-header+.app-main {
@@ -25,6 +27,7 @@
   .app-main {
     /* 84 = navbar + tags-view = 50 + 34 */
     min-height: calc(100vh - 84px);
+    padding: 10px;
   }
 
   .fixed-header+.app-main {
