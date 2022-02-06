@@ -10,7 +10,7 @@
       <!-- 博客标题区域 -->
       <div class="home-title">
         <!-- 点击标题可以跳转 -->
-        <el-link style="font-size: 25px;" @click="readBlog(blog.id)">{{ blog.title }}</el-link>
+        <el-link style="font-size: 25px;" @click="toBlog(blog.id)">{{ blog.title }}</el-link>
       </div>
 
       <!-- 博客信息组件 -->
@@ -47,11 +47,17 @@ import 'highlight.js/styles/monokai.css'
 
 import BlogInfo from '@/components/blog/BlogInfo.vue'
 
+import { useRouter } from 'vue-router'
+
 import { reactive, onMounted } from 'vue'
 import { getPubicBlogData } from '@/api/blog'
 import { getTypeList } from '@/api/type'
 
+// 每页可显示的博客数量
+const pageMaxSize = 5
+
 const blogInfo = reactive({
+  // 博客信息
   blogs: [{
     id: 0,
     status: 0,
@@ -65,18 +71,23 @@ const blogInfo = reactive({
     createTime: '',
     updateTime: ''
   }],
+  // 类别信息
   types: [{
     id: 0,
     typeName: ''
   }],
+  // 分页组件需要的参数 后端获取
   currentPage: 1,
   total: 0,
-  pageSize: 5,
+  pageSize: 0,
   pageShow: 0
 })
 
+const router = useRouter()
+
+// 获取博客信息 跳转到博客页
 const toBlog = (id: number):void => {
-  console.log(id)
+  router.push(`/blog/${id}`)
 }
 
 // 获取分类表
@@ -87,7 +98,7 @@ const getBlogTypes = async() => {
 
 // 分页获取博客
 const getBlogData = async(currentPage: number) => {
-  const { data } = await getPubicBlogData(currentPage)
+  const { data } = await getPubicBlogData(pageMaxSize, currentPage)
 
   // 从后端获取数据数据
   blogInfo.blogs = data.blogPage.records
@@ -104,11 +115,6 @@ const getBlogData = async(currentPage: number) => {
       }
     }
   }
-}
-
-// 获取博客详细信息
-const readBlog = (blogId: number) => {
-  console.log(blogId)
 }
 
 onMounted(() => {

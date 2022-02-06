@@ -1,9 +1,15 @@
 import request from '@/utils/request'
 
 // api请求接口 注意写法
-export const getPubicBlogData = (currentPage: number):any =>
+export const getPubicBlogData = (pageSize: number, currentPage: number):any =>
   request({
-    url: `/blog/getPublicBlogs?currentPage=` + currentPage,
+    url: `/blog/getPublicBlogs?currentPage=` + currentPage + `&pageSize=` + pageSize,
+    method: 'get'
+  })
+
+export const getBlogDataById = (blogId: number):any =>
+  request({
+    url: `/blog/getPublicBlog/` + blogId,
     method: 'get'
   })
 

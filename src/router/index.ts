@@ -37,6 +37,14 @@ const routes: Array<RouteRecordRaw> = [
         }
       },
       {
+        path: '/blog/:blogId',
+        name: 'Blog',
+        component: () => import('@/views/blog/blog/index.vue'),
+        meta: {
+          title: 'Blog'
+        }
+      },
+      {
         path: 'category',
         name: 'Category',
         component: () => import('@/views/blog/category/index.vue'),
