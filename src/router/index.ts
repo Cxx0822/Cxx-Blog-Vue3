@@ -5,6 +5,7 @@ import BlogLayout from '@/layout/blog/index.vue'
 // 引入系统管理布局组件
 import AdminLayout from '@/layout/admin/index.vue'
 
+// path和name尽量不要重名，即使在不同的模块中
 const routes: Array<RouteRecordRaw> = [
   // 默认为欢迎页
   {
@@ -100,11 +101,11 @@ const routes: Array<RouteRecordRaw> = [
             }
           },
           {
-            path: 'category',
-            name: 'Category',
-            component: () => import('@/views/admin/blog-manager/category.vue'),
+            path: 'category-manager',
+            name: 'CategoryManager',
+            component: () => import('@/views/admin/blog-manager/category-manager.vue'),
             meta: {
-              title: 'Category'
+              title: 'CategoryManager'
             }
           },
           {

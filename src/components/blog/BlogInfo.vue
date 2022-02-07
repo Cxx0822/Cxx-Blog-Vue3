@@ -12,40 +12,61 @@
       <el-divider direction="vertical"></el-divider>
 
       <span>
-        <i class="fa fa-calendar-o"> 发表于</i>
+        <i class="fa fa-calendar-o"> 发表于 {{ props.createTime }}</i>
       </span>
       <el-divider direction="vertical"></el-divider>
 
       <span>
-        <i class="fa fa-calendar-check-o"> 更新于</i>
+        <i class="fa fa-calendar-check-o"> 更新于 {{ props.updateTime }}</i>
       </span>
       <el-divider direction="vertical"></el-divider>
 
       <span>
-        <i class="fa fa-folder-o"> 分类于</i>
+        <i class="fa fa-folder-o"> 分类于 {{ props.type }}</i>
       </span>
       <el-divider direction="vertical"></el-divider>
 
-      <span>
-        <i class="fa fa-comment-o"> 评论数</i>
-      </span>
+      <!-- <span>
+        <i class="fa fa-comment-o"> 评论数 {{ props.comments }}</i>
+      </span> -->
     </div>
 
     <div style="margin-top: 5px;">
 
       <span>
-        <i class="fa fa-file-word-o"> 本文字数:</i>
+        <i class="fa fa-file-word-o"> 本文字数: {{ props.words }}字</i>
       </span>
       <el-divider direction="vertical"></el-divider>
 
       <span>
-        <i class="fa fa-clock-o"> 阅读时长≈ </i>
+        <i class="fa fa-clock-o"> 阅读时长≈ {{ Math.floor(props.words / 150 ) }}分钟</i>
       </span>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { defineProps } from 'vue'
+
+const props = defineProps({
+  createTime: {
+    type: String,
+    require: true
+  },
+  updateTime: {
+    type: String,
+    require: true
+  },
+  type: {
+    type: String,
+    require: true
+  },
+  words: {
+    type: Number,
+    required: true
+  }
+})
+
 </script>
 
 <style lang="scss">

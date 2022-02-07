@@ -1,5 +1,5 @@
 <template>
-  <div class="grid">
+  <div class="blog-siderbar">
     <TitleCard></TitleCard>
     <HomeCard class="home-card"></HomeCard>
   </div>
@@ -11,9 +11,12 @@ import HomeCard from '@/layout/blog/components/Sidebar/Card/HomeCard.vue'
 </script>
 
 <style lang="scss" scoped>
-.grid {
+.blog-siderbar {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 10px;
+
+  width: 250px;
+  margin-top: -10px;
 }
 </style>

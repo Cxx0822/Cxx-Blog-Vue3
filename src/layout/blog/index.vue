@@ -33,16 +33,12 @@ import Footerbar from '@/layout/blog/components/Footerbar.vue'
 
 <style lang="scss">
 .common-layout {
-  padding-left: 100px;
+  padding-left: 80px;
   padding-right: 100px;
   // 设置滚动条
   overflow: auto;
 
   .el-container {
-
-    .el-aside {
-       width: 240px
-    }
 
     .el-container {
       margin-left: 20px;

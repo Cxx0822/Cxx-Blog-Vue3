@@ -14,7 +14,13 @@
       </div>
 
       <!-- 博客信息组件 -->
-      <BlogInfo style="text-align: center;"></BlogInfo>
+      <BlogInfo
+        :create-time="blog.createTime"
+        :update-time="blog.updateTime"
+        :type="blog.typeName"
+        :words="blog.words"
+        style="text-align: center;">
+      </BlogInfo>
 
       <!-- 博客简介区域 -->
       <VueMarkdownIt  class="home-description-markdown-body" :source="blog.description"/>

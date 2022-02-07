@@ -17,8 +17,6 @@ defineProps({
 
 <style lang="scss" scoped>
 .h1-blog-title {
-  margin-top: 80px;
-
   font-size: 26px;
   text-align: center;
   word-break: break-word;
