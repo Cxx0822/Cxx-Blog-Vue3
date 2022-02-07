@@ -13,6 +13,12 @@ export const getBlogDataById = (blogId: number):any =>
     method: 'get'
   })
 
+export const getBlogTypeAndNumbers = ():any =>
+  request({
+    url: `/blog/getBlogTypeAndNumbers`,
+    method: 'get'
+  })
+
 interface blog {
   id: number,
   title: string,

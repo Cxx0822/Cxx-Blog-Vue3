@@ -38,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
         }
       },
       {
-        path: '/blog/:blogId',
+        path: ':blogId',
         name: 'Blog',
         component: () => import('@/views/blog/blog/index.vue'),
         meta: {
