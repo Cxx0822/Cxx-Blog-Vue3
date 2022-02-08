@@ -1,38 +1,31 @@
 <template>
   <div class="category-info" >
     <ul>
-      <li v-for="(category,index) in categories" :key="index">
-        <a href="www.baidu.com">{{category.typeName}}</a>
-        <span>({{category.typeNumber}})</span>
+      <li v-for="(category,index) in props.category" :key="index">
+        <!-- 待修复bug -->
+        <a @click="toCategory(category.typeName)">{{ category.typeName }}</a>
+        <span>({{ category.typeNumber }})</span>
       </li>
     </ul>
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue'
+import { defineProps } from 'vue'
 
-import { getBlogTypeAndNumbers } from '@/api/blog'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
-const categories = reactive(
-  [{
-    typeName: '',
-    typeNumber: 0
-  }]
-)
-
-// 获取博客类别信息
-const getBlogTypeInfo = async() => {
-  const { data } = await getBlogTypeAndNumbers()
-  for (var i in data.typeCountInfoList) {
-    // categories[i].typeName = data.typeCountInfo.typeName
-
-    console.log(i)
-    console.log(data.typeCountInfoList[i])
+const props = defineProps({
+  category: {
+    type: Array,
+    require: true
   }
-}
+})
 
-getBlogTypeInfo()
+const toCategory = (typeName:string) => {
+  router.push(`/blog/category/${typeName}`)
+}
 
 </script>
 

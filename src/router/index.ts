@@ -54,6 +54,14 @@ const routes: Array<RouteRecordRaw> = [
         }
       },
       {
+        path: '/blog/category/:name',
+        name: 'CategoryName',
+        component: () => import('@/views/blog/category/categoryName.vue'),
+        meta: {
+          title: 'CategoryName'
+        }
+      },
+      {
         path: 'archives',
         name: 'Archives',
         component: () => import('@/views/blog/archives/index.vue'),

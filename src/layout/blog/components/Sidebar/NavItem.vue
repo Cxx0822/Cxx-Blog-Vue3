@@ -9,22 +9,23 @@
       text-color="#000"
       router
     >
-      <el-menu-item index="home">
+      <!-- 路由路径写完整 -->
+      <el-menu-item index = "/blog/home">
         <i class="fa fa-fw fa-home"></i>
         <span>首页</span>
       </el-menu-item>
 
-      <el-menu-item index="category">
+      <el-menu-item index="/blog/category">
         <i class="fa fa-fw fa-th"></i>
         <span>分类</span>
       </el-menu-item>
 
-      <el-menu-item index="archives">
+      <el-menu-item index="/blog/archives">
         <i class="fa fa-fw fa-archive"></i>
         <span>归档</span>
       </el-menu-item>
 
-      <el-menu-item index="about">
+      <el-menu-item index="/blog/about">
         <i class="fa fa-fw fa-signal"></i>
         <span>热度排行</span>
       </el-menu-item>

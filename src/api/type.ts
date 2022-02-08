@@ -5,3 +5,9 @@ export const getTypeList = ():any =>
     url: `/type/listAll`,
     method: 'get'
   })
+
+export const getBlogTypeAndNumbers = ():any =>
+  request({
+    url: `/type/getBlogTypeAndNumbers`,
+    method: 'get'
+  })
