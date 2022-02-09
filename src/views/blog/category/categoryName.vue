@@ -1,7 +1,7 @@
 <template>
   <div class="category-name">
     <el-timeline>
-      <el-timeline-item size="large" :timestamp="route.params.name" placement="top">
+      <el-timeline-item size="large" :timestamp="String(route.params.name)" placement="top">
         <!-- 博客卡片显示 -->
         <el-card
           shadow="hover"
@@ -43,7 +43,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
-import { getPublicBlogsByTypeName } from '@/api/blog'
+import { getBlogDataByUsernameAndTypeName } from '@/api/blog'
 
 const route = useRoute()
 const router = useRouter()
@@ -66,13 +66,13 @@ const categoryNameInfo = reactive({
 })
 
 const getBlogData = async(currentPage: number) => {
-  const { data } = await getPublicBlogsByTypeName(pageMaxSize, currentPage, route.params.name)
+  const { data } = await getBlogDataByUsernameAndTypeName('Cxx', String(route.params.name), true, currentPage, pageMaxSize)
 
   // 从后端获取数据数据
-  categoryNameInfo.blogs = data.blogInfoList.records
-  categoryNameInfo.currentPage = data.blogInfoList.current
-  categoryNameInfo.total = data.blogInfoList.total
-  categoryNameInfo.pageSize = data.blogInfoList.size
+  categoryNameInfo.blogs = data.blogIPage.records
+  categoryNameInfo.currentPage = data.blogIPage.current
+  categoryNameInfo.total = data.blogIPage.total
+  categoryNameInfo.pageSize = data.blogIPage.size
 }
 
 // 获取博客信息 跳转到博客页

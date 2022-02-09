@@ -15,8 +15,8 @@
 
       <!-- 博客信息组件 -->
       <BlogInfo
-        :create-time="blog.createTime"
-        :update-time="blog.updateTime"
+        :create-time="blog.createTime.slice(0, 10)"
+        :update-time="blog.updateTime.slice(0, 10)"
         :type="blog.typeName"
         :words="blog.words"
         style="text-align: center;">
@@ -56,8 +56,9 @@ import BlogInfo from '@/components/blog/BlogInfo.vue'
 import { useRouter } from 'vue-router'
 
 import { reactive, onMounted } from 'vue'
-import { getPubicBlogData } from '@/api/blog'
-import { getTypeList } from '@/api/type'
+import { getBlogDataByUsername } from '@/api/blog'
+
+const router = useRouter()
 
 // 每页可显示的博客数量
 const pageMaxSize = 5
@@ -66,21 +67,15 @@ const blogInfo = reactive({
   // 博客信息
   blogs: [{
     id: 0,
-    status: 0,
-    userId: 0,
-    typeId: 0,
-    views: 0,
     title: '',
-    typeName: '',
-    words: 0,
     description: '',
+    views: 0,
+    words: 0,
+    username: '',
+    typeName: '',
+    status: 0,
     createTime: '',
     updateTime: ''
-  }],
-  // 类别信息
-  types: [{
-    id: 0,
-    typeName: ''
   }],
   // 分页组件需要的参数 后端获取
   currentPage: 1,
@@ -89,43 +84,25 @@ const blogInfo = reactive({
   pageShow: 0
 })
 
-const router = useRouter()
-
 // 获取博客信息 跳转到博客页
 const toBlog = (id: number):void => {
   router.push(`/blog/${id}`)
 }
 
-// 获取分类表
-const getBlogTypes = async() => {
-  const { data } = await getTypeList()
-  blogInfo.types = data.typeList
-}
-
 // 分页获取博客
 const getBlogData = async(currentPage: number) => {
-  const { data } = await getPubicBlogData(pageMaxSize, currentPage)
+  // TODO 根据登录信息获取实际的用户名
+  const { data } = await getBlogDataByUsername('Cxx', true, currentPage, pageMaxSize)
 
   // 从后端获取数据数据
-  blogInfo.blogs = data.blogPage.records
-  blogInfo.currentPage = data.blogPage.current
-  blogInfo.total = data.blogPage.total
-  blogInfo.pageSize = data.blogPage.size
+  blogInfo.blogs = data.blogIPage.records
+  blogInfo.currentPage = data.blogIPage.current
+  blogInfo.total = data.blogIPage.total
+  blogInfo.pageSize = data.blogIPage.size
   blogInfo.pageShow = 1
-
-  // 确定分类信息
-  for (var i in blogInfo.blogs) {
-    for (var j in blogInfo.types) {
-      if (blogInfo.blogs[i].typeId === blogInfo.types[j].id) {
-        blogInfo.blogs[i].typeName = blogInfo.types[j].typeName
-      }
-    }
-  }
 }
 
 onMounted(() => {
-  // 先从后端获取分类信息
-  getBlogTypes()
   // 然后获取第一页的博客信息
   getBlogData(1)
 })

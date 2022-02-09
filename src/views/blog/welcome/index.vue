@@ -33,7 +33,7 @@ const router = useRouter()
 
 const welcomeInfo = reactive({
   title: '欢用来到Cxx的个人博客',
-  subTltle: '愿世间没有bug'
+  subTltle: ''
 })
 
 // 跳转到博客页面

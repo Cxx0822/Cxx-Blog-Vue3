@@ -6,8 +6,8 @@
 
       <!-- 博客信息组件 -->
       <BlogInfo
-        :create-time="blogInfo.blog.createTime"
-        :update-time="blogInfo.blog.updateTime"
+        :create-time="blogInfo.blog.createTime.slice(0, 10)"
+        :update-time="blogInfo.blog.updateTime.slice(0, 10)"
         :type="blogInfo.blog.typeName"
         :words="blogInfo.blog.words"
         style="text-align: center;"
@@ -34,21 +34,17 @@ import { useRouter } from 'vue-router'
 const blogInfo = reactive({
   blog: {
     id: 0,
-    status: 0,
-    user: '',
-    views: 0,
     title: '',
-    typeName: '',
-    words: 0,
     description: '',
     content: '',
+    views: 0,
+    words: 0,
+    username: '',
+    typeName: '',
+    status: 0,
     createTime: '',
     updateTime: ''
-  },
-  currentPage: 1,
-  total: 0,
-  pageSize: 5,
-  pageShow: 0
+  }
 })
 
 const router = useRouter()
@@ -58,12 +54,12 @@ const getBlogById = async() => {
   const blogId = router.currentRoute.value.params.blogId
   const { data } = await getBlogDataById(Number(blogId))
 
-  blogInfo.blog.title = data.blog.title
-  blogInfo.blog.content = data.blog.content
-  blogInfo.blog.createTime = data.blog.createTime
-  blogInfo.blog.updateTime = data.blog.updateTime
-  blogInfo.blog.typeName = data.blog.typeName
-  blogInfo.blog.words = data.blog.words
+  blogInfo.blog.title = data.blogInfo.title
+  blogInfo.blog.content = data.blogInfo.content
+  blogInfo.blog.createTime = data.blogInfo.createTime
+  blogInfo.blog.updateTime = data.blogInfo.updateTime
+  blogInfo.blog.typeName = data.blogInfo.typeName
+  blogInfo.blog.words = data.blogInfo.words
 }
 
 getBlogById()
