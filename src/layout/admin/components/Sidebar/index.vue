@@ -14,23 +14,23 @@
       >
         <el-sub-menu index="/admin/blog-manager/blog-manager">
           <template #title>
-            <i class="fa fa-fw fa-home"></i>
+            <el-icon><Menu /></el-icon>
             <span>博客管理</span>
           </template>
           <el-menu-item index="/admin/blog-manager/write-blog">
-            <i class="fa fa-fw fa-home"></i>
+            <el-icon><edit /></el-icon>
             <span>新建文章</span>
           </el-menu-item>
           <el-menu-item index="/admin/blog-manager/blog-list">
-            <i class="fa fa-fw fa-home"></i>
+            <el-icon><files /></el-icon>
             <span>文章管理</span>
           </el-menu-item>
           <el-menu-item index="/admin/blog-manager/category-manager">
-            <i class="fa fa-fw fa-home"></i>
+            <el-icon><opportunity /></el-icon>
             <span>分类管理</span>
             </el-menu-item>
           <el-menu-item index="/admin/blog-manager/comment">
-            <i class="fa fa-fw fa-home"></i>
+            <el-icon><comment /></el-icon>
             <span>评论管理</span>
           </el-menu-item>
         </el-sub-menu>
@@ -44,6 +44,8 @@ import Logo from './Logo.vue'
 // import SidebarItem from './SidebarItem'
 import variables from '@/styles/variables.scss'
 import { computed, reactive } from 'vue'
+
+import { Menu, Edit, Files, Opportunity, Comment } from '@element-plus/icons'
 
 const logoInfo = reactive({
   title: 'NJTECH_Cxx',
