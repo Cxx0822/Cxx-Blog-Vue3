@@ -2,7 +2,7 @@
   <div class="container">
     <!-- --t是自定义属性，通过var函数可调用 -->
     <li style="--t:20%;">
-      <a href="#" @click="homeClick">
+      <a @click="homeClick">
         <i class="fa fa-home" aria-hidden="true"></i>
       </a>
     </li>
@@ -12,7 +12,7 @@
       </a>
     </li>
     <li style="--t:40%;">
-      <a href="#">
+      <a @click="loginClick">
         <i class="fa fa-user" aria-hidden="true"></i>
       </a>
     </li>
@@ -33,8 +33,15 @@
 </template>
 
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
 const homeClick = () => {
-  console.log('cxx')
+  router.push({ path: '/blog' })
+}
+
+const loginClick = () => {
+  router.push({ path: '/login' })
 }
 </script>
 
