@@ -6,6 +6,7 @@ import App from './App.vue'
 import '@/styles/index.scss'
 // 引入路由
 import router from './router'
+import '@/utils/permission'
 // 引入axios
 import VueAxios from 'vue-axios'
 import axios from 'axios'
@@ -16,8 +17,8 @@ import 'element-plus/dist/index.css'
 import 'dayjs/locale/zh-cn' // 中文
 import locale from 'element-plus/lib/locale/lang/zh-cn' // 中文
 
-// fortawesome
-import 'font-awesome/css/font-awesome.min.css'
+// 引入fortawesome
+import '@/assets/fontawesome/css/all.css'
 // 引入mavonEditor 目前vue3为beta版
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'

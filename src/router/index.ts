@@ -97,6 +97,8 @@ const routes: Array<RouteRecordRaw> = [
             name: 'WriteBlog',
             component: () => import('@/views/admin/blog-manager/write-blog.vue'),
             meta: {
+              // 需要权限 下同
+              requireAuth: true,
               title: 'WriteBlog'
             }
           },
@@ -105,6 +107,7 @@ const routes: Array<RouteRecordRaw> = [
             name: 'BlogList',
             component: () => import('@/views/admin/blog-manager/blog-list.vue'),
             meta: {
+              requireAuth: true,
               title: 'BlogList'
             }
           },
@@ -113,6 +116,7 @@ const routes: Array<RouteRecordRaw> = [
             name: 'CategoryManager',
             component: () => import('@/views/admin/blog-manager/category-manager.vue'),
             meta: {
+              requireAuth: true,
               title: 'CategoryManager'
             }
           },
@@ -121,6 +125,7 @@ const routes: Array<RouteRecordRaw> = [
             name: 'Comment',
             component: () => import('@/views/admin/blog-manager/comment.vue'),
             meta: {
+              requireAuth: true,
               title: 'Comment'
             }
           }
