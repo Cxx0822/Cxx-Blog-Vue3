@@ -9,15 +9,15 @@ $yellow:#FEC171;
 $panGreen: #30B08F;
 
 // sidebar
-$menuText:#bfcbd9;
-$menuActiveText:#409EFF;
-$subMenuActiveText:#f4f4f5; // https://github.com/ElemeFE/element/issues/12951
+$menuText:#000000;
+$menuActiveText:#E0FFFF;
+$subMenuActiveText:#000000;
 
-$menuBg:#304156;
-$menuHover:#263445;
+$menuBg:#008B93;          // 菜单整体背景
+$menuHover:#C1CDC1;       // 菜单悬浮背景
 
-$subMenuBg:#1f2d3d;
-$subMenuHover:#001528;
+$subMenuBg:#008B93;       // 子菜单背景
+$subMenuHover:#001528;    // 子菜单悬浮背景
 
 $sideBarWidth: 210px;
 

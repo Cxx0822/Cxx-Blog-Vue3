@@ -13,7 +13,7 @@
       border
       stripe
       >
-      <el-table-column label="序号" type="index" width="50" align="center" />
+      <el-table-column label="序号" type="index" width="100" align="center" />
 
       <el-table-column label="名称" prop="typeName"  align="center" />
 
@@ -62,7 +62,7 @@
 
 <script setup lang="ts">
 import { reactive } from 'vue'
-import { getTypeInfo, createType, deleteTypeByName } from '@/api/type'
+import { getTypeInfo } from '@/api/type'
 
 interface type {
   id: number,

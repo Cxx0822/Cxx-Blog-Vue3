@@ -11,7 +11,6 @@ import '@/utils/permission'
 import VueAxios from 'vue-axios'
 import axios from 'axios'
 // 引入element-ui组件
-// 版本：1.2.0-beta.2  其他版本暂时有问题
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import 'dayjs/locale/zh-cn' // 中文

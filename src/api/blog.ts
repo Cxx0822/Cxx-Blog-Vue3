@@ -24,16 +24,10 @@ export const getBlogDataById = (blogId: number):any =>
   })
 
 interface blog {
-  id: number,
+  id?: number,
   title: string,
   description: string,
   content: string,
-  typeId: number,
-  createTime: string,
-  updateTime: string,
-  userId?: number,
-  words: number,
-  views?: number,
   status: number
 }
 

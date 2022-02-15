@@ -6,7 +6,7 @@
       border
       stripe
       >
-      <el-table-column label="序号" type="index" width="50" align="center" />
+      <el-table-column label="序号" type="index" width="100" align="center" />
 
       <el-table-column label="标题" prop="title" show-overflow-tooltip align="center" />
 

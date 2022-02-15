@@ -1,15 +1,16 @@
 <template>
-  <div :class="{'has-logo':showLogo}" class="admin-siderbar-index">
-    <logo v-if="showLogo" :collapse="isCollapse" :title="logoInfo.title" :logo="logoInfo.logo"/>
+  <div :class="{'has-logo':showLogo}">
+    <logo v-if="showLogo" :collapse="isCollapse"/>
     <el-scrollbar wrap-class="scrollbar-wrapper">
       <el-menu
         :collapse="isCollapse"
-        :text-color="variables.menuText"
-        :active-text-color="variables.menuActiveText"
         :background-color="variables.menuBg"
+        :text-color="variables.menuText"
         :unique-opened="false"
+        :active-text-color="variables.menuActiveText"
         :collapse-transition="false"
         class="el-menu-vertical-demo"
+        mode="vertical"
         router
       >
         <el-sub-menu index="/admin/blog-manager/blog-manager">
@@ -43,28 +44,20 @@
 import Logo from './Logo.vue'
 // import SidebarItem from './SidebarItem'
 import variables from '@/styles/variables.scss'
-import { computed, reactive } from 'vue'
+import { computed } from 'vue'
+import { useSettingsStore } from '@/store/settings'
+import { useAppStore } from '@/store/app'
 
 import { Menu, Edit, Files, Opportunity, Comment } from '@element-plus/icons'
 
-const logoInfo = reactive({
-  title: 'NJTECH_Cxx',
-  logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
-})
+const settings = useSettingsStore()
+const app = useAppStore()
 
-const showLogo = computed(() => true)
-const isCollapse = computed(() => false)
+const showLogo = computed(() => settings.sidebarLogo)
+const isCollapse = computed(() => !app.sidebar.opened)
 
 </script>
 
 <style lang="scss" scoped>
-.admin-siderbar-index {
-  padding-top: 10px;
-  padding-bottom: 10px;
 
-  i {
-    vertical-align: middle;
-    margin-right: 5px;
-  }
-}
 </style>

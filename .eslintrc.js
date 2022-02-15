@@ -151,6 +151,7 @@ module.exports = {
     //   'vars': 'all',
     //   'args': 'none'
     // }],
+    'no-unused-vars':'off',
     'no-useless-call': 2,
     'no-useless-computed-key': 2,
     'no-useless-constructor': 2,

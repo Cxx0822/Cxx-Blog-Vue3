@@ -1,6 +1,6 @@
 <template>
   <div class="navbar">
-    <!-- <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" /> -->
+    <hamburger id="hamburger-container" :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
     <!-- <breadcrumb id="breadcrumb-container" class="breadcrumb-container" /> -->
 
@@ -18,34 +18,41 @@
 
       </template>
 
-      <!-- <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
+      <!-- 右上角选项卡 -->
+      <el-dropdown  class="avatar-container right-menu-item hover-effect">
         <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
-          <i class="el-icon-caret-bottom" />
+          <img src="@/assets/user.png" class="user-avatar">
+          <el-icon class="el-icon--right">
+            <arrow-down />
+          </el-icon>
         </div>
-        <el-dropdown-menu >
-          <router-link to="/profile/index">
-            <el-dropdown-item>Profile</el-dropdown-item>
-          </router-link>
-          <router-link to="/">
-            <el-dropdown-item>Dashboard</el-dropdown-item>
-          </router-link>
-          <a target="_blank" href="https://github.com/PanJiaChen/vue-element-admin/">
-            <el-dropdown-item>Github</el-dropdown-item>
-          </a>
-          <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
-            <el-dropdown-item>Docs</el-dropdown-item>
-          </a>
-          <el-dropdown-item divided @click="logout">
-            <span style="display:block;">Log Out</span>
-          </el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown> -->
+        <template #dropdown>
+          <el-dropdown-menu>
+            <router-link to="/blog">
+              <el-dropdown-item>查看博客</el-dropdown-item>
+            </router-link>
+            <a target="_blank" href="https://github.com/PanJiaChen/vue-element-admin/">
+              <el-dropdown-item>Github地址</el-dropdown-item>
+            </a>
+
+            <a target="_blank" href="https://panjiachen.github.io/vue-element-admin-site/#/">
+              <el-dropdown-item>文档地址</el-dropdown-item>
+            </a>
+
+            <el-dropdown-item divided @click="logout">
+              <span style="display:block;">退出登录</span>
+            </el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import { ArrowDown } from '@element-plus/icons-vue'
+
+import Hamburger from '@/components/admin/Hamburger/index.vue'
 // import Breadcrumb from '@/components/Breadcrumb'
 // import Hamburger from '@/components/Hamburger'
 // import ErrorLog from '@/components/ErrorLog'
@@ -57,9 +64,28 @@
 //   console.log('cxx')
 // }
 
-// const logout = () => {
-//   console.log('cxx')
-// }
+import { computed } from 'vue'
+// import { useTagsViewStore } from '@/store/tagsViews'
+import { useAppStore } from '@/store/app'
+// import { useUserStore } from '@/store/user'
+
+// const tagsViews = useTagsViewStore()
+const app = useAppStore()
+// const user = useUserStore()
+
+const sidebar = computed(() => app.sidebar)
+// const avatar = computed(() => user.avatar)
+// const nickname = computed(() => user.nickname)
+// const device = computed(() => app.device)
+
+const logout = () => {
+  console.log('cxx')
+}
+
+const toggleSideBar = () => {
+  app.toggleSideBar()
+}
+
 </script>
 
 <style lang="scss" scoped>
