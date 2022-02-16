@@ -5,6 +5,7 @@ import { getToken, setToken, removeToken } from '@/utils/auth'
 
 import { useTagsViewStore } from './tagsViews'
 
+import { resetRouter } from '@/router'
 interface userInfo {
   username: string,
   password: string,
@@ -61,7 +62,7 @@ export const useUserStore = defineStore({
           this.token = ''
           this.roles = []
           removeToken()
-
+          resetRouter()
           // reset visited views and cached views
           const tagsView = useTagsViewStore()
           tagsView.delAllViews()
@@ -70,6 +71,16 @@ export const useUserStore = defineStore({
         }).catch((error:any) => {
           reject(error)
         })
+      })
+    },
+
+    // 删除Token
+    resetToken() {
+      return new Promise<void>(resolve => {
+        this.token = ''
+        this.roles = []
+        removeToken()
+        resolve()
       })
     }
   }

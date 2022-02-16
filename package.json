@@ -20,6 +20,7 @@
     "markdown-it-sub": "^1.0.0",
     "markdown-it-sup": "^1.0.0",
     "mavon-editor": "^3.0.0-beta",
+    "nprogress": "^0.2.0",
     "pinia": "^2.0.10",
     "sass": "1.26.2",
     "sass-loader": "8.0.2",

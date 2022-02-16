@@ -6,7 +6,7 @@ import BlogLayout from '@/layout/blog/index.vue'
 import AdminLayout from '@/layout/admin/index.vue'
 
 // path和name尽量不要重名，即使在不同的模块中
-const routes: Array<RouteRecordRaw> = [
+const constantRoutes: Array<RouteRecordRaw> = [
   // 默认为欢迎页
   {
     path: '/',
@@ -99,7 +99,7 @@ const routes: Array<RouteRecordRaw> = [
             meta: {
               // 需要权限 下同
               requireAuth: true,
-              title: 'WriteBlog'
+              title: '新建博客'
             }
           },
           {
@@ -108,7 +108,7 @@ const routes: Array<RouteRecordRaw> = [
             component: () => import('@/views/admin/blog-manager/blog-list.vue'),
             meta: {
               requireAuth: true,
-              title: 'BlogList'
+              title: '文章管理'
             }
           },
           {
@@ -117,7 +117,7 @@ const routes: Array<RouteRecordRaw> = [
             component: () => import('@/views/admin/blog-manager/category-manager.vue'),
             meta: {
               requireAuth: true,
-              title: 'CategoryManager'
+              title: '分类管理'
             }
           },
           {
@@ -126,7 +126,7 @@ const routes: Array<RouteRecordRaw> = [
             component: () => import('@/views/admin/blog-manager/comment.vue'),
             meta: {
               requireAuth: true,
-              title: 'Comment'
+              title: '评论管理'
             }
           }
         ]
@@ -138,7 +138,12 @@ const routes: Array<RouteRecordRaw> = [
 const router = createRouter({
   history: createWebHashHistory(),
   scrollBehavior: () => ({ top: 0 }),
-  routes
+  routes: constantRoutes
 })
+
+export function resetRouter():void {
+  // 刷新页面 vue-router4暂时没有重置路由的方法
+  location.reload()
+}
 
 export default router

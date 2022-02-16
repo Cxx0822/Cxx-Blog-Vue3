@@ -28,9 +28,9 @@
         </div>
         <template #dropdown>
           <el-dropdown-menu>
-            <router-link to="/blog">
+            <!-- <router-link to="/blog">
               <el-dropdown-item>查看博客</el-dropdown-item>
-            </router-link>
+            </router-link> -->
             <a target="_blank" href="https://github.com/PanJiaChen/vue-element-admin/">
               <el-dropdown-item>Github地址</el-dropdown-item>
             </a>
@@ -53,37 +53,29 @@
 import { ArrowDown } from '@element-plus/icons-vue'
 
 import Hamburger from '@/components/admin/Hamburger/index.vue'
-// import Breadcrumb from '@/components/Breadcrumb'
-// import Hamburger from '@/components/Hamburger'
-// import ErrorLog from '@/components/ErrorLog'
-// import Screenfull from '@/components/Screenfull'
-// import SizeSelect from '@/components/SizeSelect'
-// import Search from '@/components/HeaderSearch'
-
-// const toggleSideBar = () => {
-//   console.log('cxx')
-// }
 
 import { computed } from 'vue'
-// import { useTagsViewStore } from '@/store/tagsViews'
+import { useRouter } from 'vue-router'
+
 import { useAppStore } from '@/store/app'
-// import { useUserStore } from '@/store/user'
+import { useUserStore } from '@/store/user'
 
-// const tagsViews = useTagsViewStore()
-const app = useAppStore()
-// const user = useUserStore()
+const router = useRouter()
 
-const sidebar = computed(() => app.sidebar)
-// const avatar = computed(() => user.avatar)
-// const nickname = computed(() => user.nickname)
-// const device = computed(() => app.device)
+const appStore = useAppStore()
+const userStore = useUserStore()
 
-const logout = () => {
-  console.log('cxx')
+const sidebar = computed(() => appStore.sidebar)
+
+// 侧边栏控制
+const toggleSideBar = () => {
+  appStore.toggleSideBar()
 }
 
-const toggleSideBar = () => {
-  app.toggleSideBar()
+// 退出登录
+const logout = () => {
+  userStore.logout()
+  router.push('/login')
 }
 
 </script>

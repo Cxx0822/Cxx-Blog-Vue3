@@ -6,7 +6,7 @@ import App from './App.vue'
 import '@/styles/index.scss'
 // 引入路由
 import router from './router'
-import '@/utils/permission'
+import '@/permission'
 // 引入axios
 import VueAxios from 'vue-axios'
 import axios from 'axios'

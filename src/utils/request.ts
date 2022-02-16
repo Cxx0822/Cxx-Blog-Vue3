@@ -1,5 +1,11 @@
-import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import axios, { AxiosResponse } from 'axios'
 import { ElMessage, ElMessageBox } from 'element-plus'
+
+import { getToken } from '@/utils/auth'
+
+import { useUserStore } from '@/store/user'
+// pinia的非组件使用：https://pinia.vuejs.org/core-concepts/outside-component-usage.html
+// const userStore = useUserStore()
 
 const service = axios.create({
   // URL地址
@@ -10,15 +16,18 @@ const service = axios.create({
 
 // 请求拦截器
 service.interceptors.request.use(
-  (config: AxiosRequestConfig) => {
+  // 这里要将原来的类型AxiosRequestConfig设置为类型为any 否则会编译不过
+  (config: any) => {
+    const userStore = useUserStore()
     // 如果有token 则加上token值
-    // TODO
-    // config.headers['X-token'] = token
+    if (userStore.token) {
+      config.headers['X-Token'] = getToken()
+    }
     return config
   },
 
   (error) => {
-    Promise.reject(error)
+    return Promise.reject(error)
   }
 )
 
@@ -45,14 +54,17 @@ service.interceptors.response.use(
             type: 'warning'
           }
         ).then(() => {
+          const userStore = useUserStore()
           // 重置token
-          // TODO
+          userStore.resetToken().then(() => {
+            location.reload()
+          })
         })
       }
       return Promise.reject(new Error(res.message || 'Error'))
     } else {
       // 正确则返回数据
-      return response.data
+      return res
     }
   },
   (error) => {
