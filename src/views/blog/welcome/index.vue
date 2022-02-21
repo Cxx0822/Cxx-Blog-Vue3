@@ -7,8 +7,9 @@
     <sidebar-menu></sidebar-menu>
 
     <!-- 开始阅读 -->
-    <div class="bounce down" @click="startRead">
-      <el-icon class="el-icon-arrow-down" style="color: white">
+    <div class="bounce down">
+      <h3 style="color: blueviolet;">~开启阅读之旅吧~</h3>
+      <el-icon class="icon-down" style="color: white"  @click="startRead">
         <arrow-down />
       </el-icon>
     </div>
@@ -47,24 +48,34 @@ const startRead = () => {
   .down {
     animation: bounce 2s infinite;
     animation-duration: 3s;
-    font-size: 25px;
     position: absolute;
     bottom: 5px;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 2px solid #fff;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+
+    text-align: center;
+
+    .icon-down {
+      font-size: 25px;
+
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+
+    }
+
+    .icon-down:hover {
+      cursor: pointer;
+      box-shadow: 0 0 20px 0 white;
+      transition: all .2s;
+    }
   }
   .down:hover {
     animation: none;
-    cursor: pointer;
-    box-shadow: 0 0 20px 0 white;
-    transition: all .2s;
   }
 
   @keyframes bounce {

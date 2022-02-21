@@ -23,6 +23,7 @@ interface type {
   typeName: string
 }
 
+// 增加类别信息
 export const createType = (type: type):any =>
   request({
     url: `/type/create`,
@@ -30,6 +31,15 @@ export const createType = (type: type):any =>
     data: type
   })
 
+// 根据类别名除修改类别信息
+export const updateType = (type: type, typeName: string):any =>
+  request({
+    url: `/type/updateByName?typeName=` + typeName,
+    method: 'post',
+    data: type
+  })
+
+// 根据类别名除删除类别信息
 export const deleteTypeByName = (typeName: string):any =>
   request({
     url: `/type/deleteByName?typeName=` + typeName,
