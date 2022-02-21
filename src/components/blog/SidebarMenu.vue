@@ -34,7 +34,12 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
+import { removeToken } from '@/utils/auth'
+
 const router = useRouter()
+
+// 防止用户直接关闭浏览器导致token仍然存储在浏览器中，从而不能跳转到login页面的问题
+removeToken()
 
 const homeClick = () => {
   router.push({ path: '/blog' })

@@ -74,7 +74,7 @@ export const updateUser = (userInfo:userInfo):any =>
   })
 
 // 查询用户 参数：用户名
-export const readUser = (username:userInfo):any =>
+export const readUser = (username:string):any =>
   request({
     url: '/user/read',
     method: 'get',

@@ -14,11 +14,11 @@
     </el-form-item>
 
     <el-form-item label="文章正文" prop="content">
-      <mavon-editor v-model="blogForm.content"></mavon-editor>
+      <mavon-editor v-model="blogForm.content" class="mavon-editor"></mavon-editor>
     </el-form-item>
 
-    <el-form-item label="分类">
-      <el-select :allow-create="true" :filterable="true" placeholder="请选择分类（输入可添加新分类）" style="width: 100%;">
+    <el-form-item label="分类" prop="type">
+      <el-select :allow-create="true" :filterable="true" placeholder="请选择分类" style="width: 100%;">
       <el-option v-for="type in typeInfo.types" :key="type.id" :label="type.typeName" :value="type.id"></el-option>
     </el-select>
     </el-form-item>
@@ -79,6 +79,9 @@ const rules = reactive({
   ],
   content: [
     { required: true, message: '请输入内容', trigger: 'blur' }
+  ],
+  type: [
+    { required: true, message: '请选择分类信息', trigger: 'blur' }
   ]
 })
 
@@ -117,7 +120,7 @@ const submitForm = (formEl: InstanceType<typeof ElForm> | undefined) => {
       await createBlog(blogForm)
       ElMessage.success('新建博客成功')
     } else {
-      console.log('error submit!')
+      ElMessage.error('请正确填写博客信息')
       return false
     }
   })
@@ -130,3 +133,11 @@ const resetForm = (formEl: InstanceType<typeof ElForm> | undefined) => {
 }
 
 </script>
+
+<style lang="scss" scoped>
+.mavon-editor {
+  width: 100%;
+  height: 600px;
+}
+
+</style>

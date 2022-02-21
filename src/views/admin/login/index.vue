@@ -163,7 +163,7 @@ const handleLogin = (formEl: FormInstance | undefined) => {
       userStore.login(loginInfo.loginForm)
         .then(() => {
           // 跳转路由
-          router.push('/admin')
+          router.push('/blog-manager')
           ElMessage.success('登录成功')
           loginInfo.loading = false
         })
