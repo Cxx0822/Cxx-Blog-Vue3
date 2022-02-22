@@ -18,15 +18,22 @@ import locale from 'element-plus/lib/locale/lang/zh-cn' // 中文
 
 // 引入fortawesome
 import '@/assets/fontawesome/css/all.css'
+
 // 引入mavonEditor 目前vue3为beta版
 import mavonEditor from 'mavon-editor'
 import 'mavon-editor/dist/css/index.css'
+
+// 引入svg
+import svgIcon from '@/icons/index.vue'
+import '@/icons/index'
 
 // import MdEditorV3 from 'md-editor-v3'
 // import 'md-editor-v3/lib/style.css'
 
 // 创建Vue3实例
 const app = createApp(App)
+// 注册svg组件
+app.component('svg-icon', svgIcon)
 // 使用路由
 app.use(router)
 // 使用Pinia 需要ts 4.5以上

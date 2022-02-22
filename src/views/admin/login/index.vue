@@ -16,7 +16,7 @@
       <el-form-item prop="username">
         <!-- username图标 -->
         <span class="svg-container">
-          <i class="fa-solid fa-user"></i>
+          <svg-icon icon-class="user" />
         </span>
         <!-- username输入框 -->
         <el-input
@@ -34,7 +34,7 @@
       <el-tooltip v-model="loginInfo.capsTooltip" content="Caps lock is On" placement="right" manual>
         <el-form-item prop="password">
           <span class="svg-container">
-            <i class="fa-solid fa-lock"></i>
+            <svg-icon icon-class="password" />
           </span>
           <!-- @keyup.native绑定按键事件，检查是否输入了大写 -->
           <!-- @keyup.enter.native绑定按键的回车事件 -->
@@ -53,7 +53,7 @@
           />
           <!-- 显示密码图标 -->
           <span class="show-pwd" @click="showPwd">
-            <i :class="loginInfo.passwordType === 'password' ? 'fa-solid fa-eye-slash' : 'fa-solid fa-eye'"></i>
+            <svg-icon :icon-class="loginInfo.passwordType === 'password' ? 'eye' : 'eye-open'" />
           </span>
         </el-form-item>
       </el-tooltip>

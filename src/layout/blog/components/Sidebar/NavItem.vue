@@ -34,6 +34,11 @@
         <i class="fa fa-search"></i>
         <span>搜索</span>
       </el-menu-item> -->
+
+      <el-menu-item index="/blog-manager/write-blog">
+        <svg-icon icon-class="blogManager"></svg-icon>
+        <span>管理博客</span>
+      </el-menu-item>
     </el-menu>
   </div>
 </template>
@@ -56,7 +61,10 @@
 
   i {
     vertical-align: middle;
-    margin-right: 5px;
+  }
+
+  span {
+    margin-left: 10px;
   }
 }
 </style>

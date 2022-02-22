@@ -11,8 +11,8 @@ import AdminLayout from '@/layout/admin/index.vue'
 export const componentMap = {
   // 和数据库中的component字段绑定
   layout: ():any => import('@/layout/admin/index.vue').then(m => m.default),
-  permission_role: ():any => import('@/views/admin/permission/role.vue').then(m => m.default),
-  permission_user: ():any => import('@/views/admin/permission/user.vue').then(m => m.default)
+  permission_user: ():any => import('@/views/admin/permission/user.vue').then(m => m.default),
+  permission_role: ():any => import('@/views/admin/permission/role.vue').then(m => m.default)
 }
 
 // path和name尽量不要重名，即使在不同的模块中
@@ -101,7 +101,7 @@ export const constantRoutes: Array<any> = [
     alwaysShow: true,
     meta: {
       title: '博客管理',
-      icon: 'fa-solid fa-cube'
+      icon: 'blogManager'
     },
     children: [
       {
@@ -110,7 +110,7 @@ export const constantRoutes: Array<any> = [
         component: () => import('@/views/admin/blog-manager/write-blog.vue'),
         meta: {
           title: '新建博客',
-          icon: 'fa-solid fa-pen-to-square'
+          icon: 'writeBlog'
         }
       },
       {
@@ -119,7 +119,7 @@ export const constantRoutes: Array<any> = [
         component: () => import('@/views/admin/blog-manager/blog-list.vue'),
         meta: {
           title: '文章管理',
-          icon: 'fa-solid fa-note-sticky'
+          icon: 'blogList'
         }
       },
       {
@@ -128,7 +128,7 @@ export const constantRoutes: Array<any> = [
         component: () => import('@/views/admin/blog-manager/category-manager.vue'),
         meta: {
           title: '分类管理',
-          icon: 'fa-solid fa-folder'
+          icon: 'categoryManager'
         }
       },
       {
@@ -137,7 +137,7 @@ export const constantRoutes: Array<any> = [
         component: () => import('@/views/admin/blog-manager/comment.vue'),
         meta: {
           title: '评论管理',
-          icon: 'fa-solid fa-comment'
+          icon: 'commentManage'
         }
       }
     ]

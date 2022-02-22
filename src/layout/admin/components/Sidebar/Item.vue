@@ -1,8 +1,8 @@
 <template>
   <div class="item-div">
-    <i :class="props.icon" class="sub-el-icon">
-      <span style="margin-left: 10px;">{{ props.title }}</span>
-    </i>
+    <i v-if="(props.icon).includes('el-icon')" class="sub-el-icon"></i>
+    <svg-icon v-else :icon-class="props.icon"></svg-icon>
+    <span>{{ props.title }}</span>
   </div>
 </template>
 
@@ -23,12 +23,6 @@ const props = defineProps({
 
 <style lang="scss" scoped>
 .item-div {
-  i {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
   .sub-el-icon {
     color: currentColor;
   }

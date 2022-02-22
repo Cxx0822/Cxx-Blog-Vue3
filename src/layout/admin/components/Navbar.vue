@@ -28,9 +28,9 @@
         </div>
         <template #dropdown>
           <el-dropdown-menu>
-            <!-- <router-link to="/blog">
+            <router-link to="/blog">
               <el-dropdown-item>查看博客</el-dropdown-item>
-            </router-link> -->
+            </router-link>
             <a target="_blank" href="https://github.com/PanJiaChen/vue-element-admin/">
               <el-dropdown-item>Github地址</el-dropdown-item>
             </a>
