@@ -18,7 +18,7 @@
       >
       <el-table-column label="序号" type="index" width="100" align="center" />
 
-      <el-table-column label="名称" prop="typeName"  align="center" />
+      <el-table-column label="名称" prop="typeName" align="center" />
 
       <el-table-column label="操作" width="200" align="center">
         <template #default="scope">
@@ -67,7 +67,7 @@ import { Plus } from '@element-plus/icons-vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 
 // 每页可显示的类别数量
-const pageMaxSize = 5
+const pageMaxSize = 10
 
 const categoryInfo = reactive({
   // 博客信息

@@ -18,9 +18,14 @@
     </el-form-item>
 
     <el-form-item label="分类" prop="type">
-      <el-select :allow-create="true" :filterable="true" placeholder="请选择分类" style="width: 100%;">
-      <el-option v-for="type in typeInfo.types" :key="type.id" :label="type.typeName" :value="type.id"></el-option>
-    </el-select>
+      <el-select v-model="blogForm.typeName" class="m-2" placeholder="请选择分类">
+        <el-option
+          v-for="item in typeInfo.types"
+          :key="item.typeName"
+          :value="item.typeName"
+        >
+        </el-option>
+      </el-select>
     </el-form-item>
 
     <el-form-item label="是否公开">
@@ -54,10 +59,7 @@ const blogForm = reactive({
   title: '',
   description: '',
   content: '',
-  typeId: 0,
-  createTime: '',
-  updateTime: '',
-  userId: 1,
+  typeName: '',
   words: 0,
   views: 0,
   status: 0
