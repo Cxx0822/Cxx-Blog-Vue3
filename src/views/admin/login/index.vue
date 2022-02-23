@@ -133,8 +133,6 @@ onMounted(() => {
   } else if (loginInfo.loginForm.password === '') {
     passwordRef.value.focus()
   }
-  // 删除token 防止之前未正确退出 遗留在浏览器中的token
-  removeToken()
 })
 
 // 是否开启大写模式
@@ -163,6 +161,9 @@ const handleLogin = (formEl: FormInstance | undefined) => {
   formEl.validate((valid) => {
     if (valid) {
       loginInfo.loading = true
+
+      // 删除token 防止之前未正确退出 遗留在浏览器中的token
+      removeToken()
 
       userStore.login(loginInfo.loginForm)
         .then(() => {

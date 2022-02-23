@@ -51,13 +51,15 @@ export const createBlog = (blog:blog):any =>
 // 设置博客作者信息
 export const setBlogUser = (blogName:string, username:string):any =>
   request({
-    url: `/blog/setBlogUser?blogName=` + blogName + `&username=` + username,
+    url: `/blog/setBlogUser?blogName=` + encodeURIComponent(blogName) +
+      `&username=` + encodeURIComponent(username),
     method: 'post'
   })
 
 // 设置博客类别信息
 export const setBlogType = (blogName:string, typeName:string):any =>
   request({
-    url: `/blog/setBlogType?blogName=` + blogName + `&typeName=` + typeName,
+    url: `/blog/setBlogType?blogName=` + encodeURIComponent(blogName) +
+      `&typeName=` + encodeURIComponent(typeName),
     method: 'post'
   })

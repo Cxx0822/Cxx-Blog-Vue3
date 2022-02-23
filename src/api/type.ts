@@ -34,7 +34,7 @@ export const createType = (type: type):any =>
 // 根据类别名除修改类别信息
 export const updateType = (type: type, typeName: string):any =>
   request({
-    url: `/type/updateByName?typeName=` + typeName,
+    url: `/type/updateByName?typeName=` + encodeURIComponent(typeName),
     method: 'post',
     data: type
   })
@@ -42,6 +42,6 @@ export const updateType = (type: type, typeName: string):any =>
 // 根据类别名除删除类别信息
 export const deleteTypeByName = (typeName: string):any =>
   request({
-    url: `/type/deleteByName?typeName=` + typeName,
+    url: `/type/deleteByName?typeName=` + encodeURIComponent(typeName),
     method: 'delete'
   })

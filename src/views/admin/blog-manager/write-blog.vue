@@ -87,7 +87,7 @@ const rules = reactive({
     { required: true, message: '请输入内容', trigger: 'blur' }
   ],
   typeName: [
-    { required: true, message: '请选择分类信息', trigger: 'change' }
+    { required: true, message: '请选择分类信息', trigger: 'blur' }
   ]
 })
 
