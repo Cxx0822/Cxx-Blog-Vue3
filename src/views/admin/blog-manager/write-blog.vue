@@ -9,7 +9,7 @@
       <el-input v-model="blogForm.title" placeholder="请输入标题"></el-input>
     </el-form-item>
 
-    <el-form-item label="文章描述" prop="description">
+    <el-form-item label="文章描述">
       <el-input v-model="blogForm.description" placeholder="请输入摘要(默认为正文前100字)"></el-input>
     </el-form-item>
 
@@ -17,11 +17,12 @@
       <mavon-editor v-model="blogForm.content" class="mavon-editor"></mavon-editor>
     </el-form-item>
 
-    <el-form-item label="分类" prop="type">
+    <el-form-item label="分类" prop="typeName">
       <el-select v-model="blogForm.typeName" class="m-2" placeholder="请选择分类">
         <el-option
           v-for="item in typeInfo.types"
           :key="item.typeName"
+          :label="item.typeName"
           :value="item.typeName"
         >
         </el-option>
@@ -46,23 +47,26 @@ import { reactive, ref } from 'vue'
 import type { ElForm } from 'element-plus'
 import { ElMessage } from 'element-plus'
 
+import { useUserStore } from '@/store/user'
+
 import { computeWords } from '@/utils/blog'
 
-import { createBlog } from '@/api/blog'
+import { createBlog, setBlogType, setBlogUser } from '@/api/blog'
 import { getTypeList } from '@/api/type'
+
+const userStore = useUserStore()
 
 const ruleFormRef = ref<InstanceType<typeof ElForm>>()
 
 // 博客表单
-const blogForm = reactive({
-  id: 0,
+const blogForm:any = reactive({
   title: '',
   description: '',
   content: '',
-  typeName: '',
   words: 0,
   views: 0,
-  status: 0
+  status: 0,
+  typeName: ''
 })
 
 // 类别信息
@@ -82,8 +86,8 @@ const rules = reactive({
   content: [
     { required: true, message: '请输入内容', trigger: 'blur' }
   ],
-  type: [
-    { required: true, message: '请选择分类信息', trigger: 'blur' }
+  typeName: [
+    { required: true, message: '请选择分类信息', trigger: 'change' }
   ]
 })
 
@@ -118,8 +122,15 @@ const submitForm = (formEl: InstanceType<typeof ElForm> | undefined) => {
       blogForm.words = computeWords(blogForm.content)
       // 自动写入博客描述
       autoWrite()
+      const blogType = blogForm.typeName
+      delete blogForm.typeName
       // 新建博客
       await createBlog(blogForm)
+      // 设置博客作者
+      await setBlogUser(blogForm.title, userStore.username)
+      // 设置博客类别
+      // 需要编译成URI格式
+      await setBlogType(blogForm.title, blogType)
       ElMessage.success('新建博客成功')
     } else {
       ElMessage.error('请正确填写博客信息')

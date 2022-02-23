@@ -77,7 +77,7 @@
 
 <script setup lang="ts">
 import { onMounted, reactive } from 'vue'
-import { getBlogDataByUsername } from '@/api/blog'
+import { getAllBlogInfo } from '@/api/blog'
 
 interface blog {
   id: number,
@@ -119,7 +119,7 @@ const blogInfo = reactive({
 // 分页获取博客
 const getBlogData = async(currentPage: number) => {
   // TODO 根据登录信息获取实际的用户名
-  const { data } = await getBlogDataByUsername('Cxx', false, currentPage, pageMaxSize)
+  const { data } = await getAllBlogInfo(false, currentPage, pageMaxSize)
 
   // 从后端获取数据数据
   blogInfo.blogs = data.blogIPage.records

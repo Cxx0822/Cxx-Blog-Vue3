@@ -76,6 +76,8 @@ import { useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
 import type { ElForm } from 'element-plus'
 
+import { removeToken } from '@/utils/auth'
+
 // DOM元素的引用
 const usernameRef = ref()
 const passwordRef = ref()
@@ -131,6 +133,8 @@ onMounted(() => {
   } else if (loginInfo.loginForm.password === '') {
     passwordRef.value.focus()
   }
+  // 删除token 防止之前未正确退出 遗留在浏览器中的token
+  removeToken()
 })
 
 // 是否开启大写模式
