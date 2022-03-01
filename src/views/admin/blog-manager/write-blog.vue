@@ -6,7 +6,7 @@
     class="demo-ruleForm"
   >
     <el-form-item label="文章标题" prop="title">
-      <el-input v-model="blogForm.title" placeholder="请输入标题"></el-input>
+      <el-input v-model="blogForm.title" placeholder="请输入标题" :disabled="blogId > 0"></el-input>
     </el-form-item>
 
     <el-form-item label="文章描述">
@@ -34,11 +34,11 @@
     </el-form-item>
 
     <el-form-item>
-      <el-button type="primary" @click="submitForm(ruleFormRef)">新建博客</el-button
-      >
+      <el-button v-if="blogId > 1" type="primary" @click="submitForm(ruleFormRef, 'create')">新建博客</el-button>
+      <el-button v-else type="primary" @click="submitForm(ruleFormRef, 'update')">更新博客</el-button>
       <el-button @click="resetForm(ruleFormRef)">重置</el-button>
     </el-form-item>
-  </el-form>
+  </el-form>,
 </template>
 
 <script lang="ts" setup>
@@ -51,8 +51,12 @@ import { useUserStore } from '@/store/user'
 
 import { computeWords } from '@/utils/blog'
 
-import { createBlog, setBlogType, setBlogUser } from '@/api/blog'
+import { createBlog, setBlogType, setBlogUser, getBlogDataById, updateBlogDataById } from '@/api/blog'
 import { getTypeList } from '@/api/type'
+
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 const userStore = useUserStore()
 
@@ -77,6 +81,9 @@ const typeInfo = reactive({
   }]
 })
 
+// 博客ID信息
+const blogId = ref(parseInt(route.params.blogId as string))
+
 // 校验规则
 const rules = reactive({
   title: [
@@ -97,8 +104,22 @@ const getBlogTypes = async() => {
   typeInfo.types = data.typeList
 }
 
+// 根据id获取博客内容
+const getBlogData = async(blogId:number) => {
+  const { data } = await getBlogDataById(blogId)
+  blogForm.title = data.blogInfo.title
+  blogForm.description = data.blogInfo.description
+  blogForm.content = data.blogInfo.content
+  blogForm.typeName = data.blogInfo.typeName
+  blogForm.status = data.blogInfo.status
+}
+
 // 初始执行一次
 getBlogTypes()
+// 如果是编辑博客页面
+if (blogId.value) {
+  getBlogData(blogId.value)
+}
 
 // 将正文的内容前100字自动写入文章描述中
 const autoWrite = () => {
@@ -113,7 +134,7 @@ const autoWrite = () => {
 }
 
 // 提交表单
-const submitForm = (formEl: InstanceType<typeof ElForm> | undefined) => {
+const submitForm = (formEl: InstanceType<typeof ElForm> | undefined, submitType:string) => {
   if (!formEl) return
   // 表单校验
   formEl.validate(async(valid) => {
@@ -124,14 +145,24 @@ const submitForm = (formEl: InstanceType<typeof ElForm> | undefined) => {
       autoWrite()
       const blogType = blogForm.typeName
       delete blogForm.typeName
-      // 新建博客
-      await createBlog(blogForm)
+
+      if (submitType === 'create') {
+        // 新建博客
+        await createBlog(blogForm)
+      } else {
+        // 更新博客
+        await updateBlogDataById(blogId.value, blogForm)
+      }
       // 设置博客作者
       await setBlogUser(blogForm.title, userStore.username)
       // 设置博客类别
-      // 需要编译成URI格式
       await setBlogType(blogForm.title, blogType)
-      ElMessage.success('新建博客成功')
+
+      if (submitType === 'create') {
+        ElMessage.success('新建博客成功')
+      } else {
+        ElMessage.success('更新博客成功')
+      }
     } else {
       ElMessage.error('请正确填写博客信息')
       return false

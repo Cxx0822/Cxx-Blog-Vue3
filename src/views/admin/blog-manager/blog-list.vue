@@ -79,6 +79,10 @@
 import { onMounted, reactive } from 'vue'
 import { getAllBlogInfo } from '@/api/blog'
 
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
 interface blog {
   id: number,
   title: string,
@@ -136,7 +140,7 @@ const getBlogData = async(currentPage: number) => {
 
 // 编辑博客
 const handleEdit = (index: number, row: blog) => {
-  console.log(index, row)
+  router.push(`/blog-manager/blog-list/${row.id}`)
 }
 
 // 删除博客

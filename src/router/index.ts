@@ -123,6 +123,16 @@ export const constantRoutes: Array<any> = [
         }
       },
       {
+        path: '/blog-manager/blog-list/:blogId',
+        name: 'EditBlog',
+        hidden: true,
+        meta: {
+          title: '编辑博客',
+          icon: 'writeBlog'
+        },
+        component: () => import('@/views/admin/blog-manager/write-blog.vue')
+      },
+      {
         path: 'category-manager',
         name: 'CategoryManager',
         component: () => import('@/views/admin/blog-manager/category-manager.vue'),

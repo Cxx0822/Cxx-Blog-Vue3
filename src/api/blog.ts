@@ -1,4 +1,11 @@
 import request from '@/utils/request'
+interface blog {
+  id?: number,
+  title: string,
+  description: string,
+  content: string,
+  status: number
+}
 
 // api请求接口 注意写法
 // 获取所有博客数据
@@ -32,13 +39,13 @@ export const getBlogDataById = (blogId: number):any =>
     method: 'get'
   })
 
-interface blog {
-  id?: number,
-  title: string,
-  description: string,
-  content: string,
-  status: number
-}
+// 根据博客i更新博客数据
+export const updateBlogDataById = (blogId: number, blog:blog):any =>
+  request({
+    url: `/blog/updateById?blogId=` + blogId,
+    method: 'post',
+    data: blog
+  })
 
 // 新建博客
 export const createBlog = (blog:blog):any =>
